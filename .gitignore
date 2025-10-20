@@ -1,2 +1,4 @@
 /fontawesome
 /node_modules
+.parcel-cache/
+*.env

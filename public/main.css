@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--color-grey-light-2);
 }
 
@@ -80,11 +80,11 @@ a {
   text-decoration: none;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.rotate-icon{
+.rotate-icon {
   transform: rotate(180deg);
 }
 
@@ -289,7 +289,7 @@ a {
   text-align: left;
 
   &::after {
-    content: "";
+    content: '';
     width: 1.5rem;
     height: 1.5rem;
     background-color: #b265c2;
@@ -333,6 +333,10 @@ a {
   position: relative;
   padding-bottom: 4rem;
 
+  svg {
+    cursor: pointer;
+  }
+
   p {
     position: absolute;
     bottom: 0;
@@ -363,9 +367,23 @@ a {
     }
   }
 }
+.form-msg {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex: 1;
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+}
 
 .input-msg {
-  width: 65rem;
+  flex: 0 0 50%;
+  font-size: inherit;
+  font-family: inherit;
+  border-radius: 5px;
 }
 
 .icon-send {
@@ -374,7 +392,7 @@ a {
 
 @keyframes moveUp {
   0% {
-    transform: translateY(-1rem);
+    transform: translateY(-0.5rem);
   }
   80% {
     opacity: 0.3;
@@ -526,8 +544,8 @@ a {
   }
 
   .form {
-    padding:0 2rem;
-    transition: all .5s;
+    padding: 0 2rem;
+    transition: all 0.5s;
     label {
       display: block;
       font-size: 1.3rem;
@@ -549,9 +567,10 @@ a {
         border: 1px solid var(--color-grey-light);
       }
     }
-
   }
-  #hidden--2,#hidden--3,#hidden--4{
+  #hidden--2,
+  #hidden--3,
+  #hidden--4 {
     padding: 0 2rem;
   }
 
@@ -579,16 +598,16 @@ a {
   }
 }
 
-.custom-checkbox{
+.custom-checkbox {
   width: 4rem;
   height: 2rem;
-  border: .1px solid #fff;
+  border: 0.1px solid #fff;
   border-radius: 10px;
   position: relative;
-  transition: all .5s;
+  transition: all 0.5s;
 
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -597,16 +616,16 @@ a {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    transition: all .5s;
+    transition: all 0.5s;
   }
 }
 
-.input-hidden:checked + .custom-checkbox{
+.input-hidden:checked + .custom-checkbox {
   background-color: var(--color-cta);
 }
-.input-hidden:checked + .custom-checkbox::before{
+.input-hidden:checked + .custom-checkbox::before {
   background-color: var(--color-grey-light);
-  top: .1rem;
+  top: 0.1rem;
   left: 100%;
   transform: translateX(-100%);
 }

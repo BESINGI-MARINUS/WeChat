@@ -2,13 +2,19 @@
   "name": "chatting-app",
   "version": "1.0.0",
   "description": "A realtime chatting application",
-  "main": "main.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "parcel:dev": "parcel ./public/js/index.js --dist-dir ./public/js/bundle",
+    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundle "
   },
   "author": "Besingi Marinus",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "morgan": "^1.10.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.0"
   }
 }
