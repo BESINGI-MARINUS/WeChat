@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A realtime chatting application",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon server.js",
     "parcel:dev": "parcel ./public/js/index.js --dist-dir ./public/js/bundle",
     "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundle "
   },

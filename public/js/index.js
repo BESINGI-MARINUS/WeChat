@@ -42,4 +42,16 @@ settingsContainer.addEventListener('click', function (e) {
     .classList.toggle('hidden');
 });
 
+//Send message with Socket.io
+const formMsg = document.querySelector('.form-msg');
+const inputMsg = document.querySelector('.input-msg');
+
 const socket = io();
+
+formMsg.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const msg = inputMsg.value.trim();
+  if (!msg) return;
+  socket.emit('chat message', msg);
+  inputMsg.value = '';
+});

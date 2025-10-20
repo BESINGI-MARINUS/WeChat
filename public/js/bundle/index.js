@@ -745,7 +745,17 @@ settingsContainer.addEventListener('click', function(e) {
     icon.style.transition = 'all .5s';
     const id = document.querySelector(`#hidden--${clicked.dataset.val}`).classList.toggle('hidden');
 });
+//Send message with Socket.io
+const formMsg = document.querySelector('.form-msg');
+const inputMsg = document.querySelector('.input-msg');
 const socket = io();
+formMsg.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const msg = inputMsg.value.trim();
+    if (!msg) return;
+    socket.emit('chat message', msg);
+    inputMsg.value = '';
+});
 
 },{}]},["k2ZJO","f2QDv"], "f2QDv", "parcelRequire466a", {})
 
