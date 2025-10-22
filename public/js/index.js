@@ -55,3 +55,21 @@ formMsg.addEventListener('submit', function (e) {
   socket.emit('chat message', msg);
   inputMsg.value = '';
 });
+
+const messages = document.querySelector('.section-messages-box');
+socket.on('chat message', (msg) => {
+  let hours = `${new Date().getHours()}`.padStart(2, '0');
+  let mins = `${new Date().getMinutes()}`.padStart(2, '0');
+  const time =
+    +hours < 12 ? `${hours}:${mins} AM` : `${+hours - 12}:${mins} PM`;
+
+  const markup = `
+    <div class="sender-message-box">
+    <p class="message-reciever">${msg}</p>
+    <p><span>&#10004</span>${time}</p>
+  </div>
+    `;
+  messages.insertAdjacentHTML('beforeend', markup);
+
+  window.scrollTo(0, document.body.scrollHeight);
+});
