@@ -46,7 +46,7 @@ settingsContainer.addEventListener('click', function (e) {
 const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
 
-const socket = io();
+const socket = io({ auth: { serverOffset: 0 } });
 
 formMsg.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -57,7 +57,7 @@ formMsg.addEventListener('submit', function (e) {
 });
 
 const messages = document.querySelector('.section-messages-box');
-socket.on('chat message', (msg) => {
+socket.on('chat message', (msg, serverOffset) => {
   let hours = `${new Date().getHours()}`.padStart(2, '0');
   let mins = `${new Date().getMinutes()}`.padStart(2, '0');
   const time =
@@ -72,4 +72,5 @@ socket.on('chat message', (msg) => {
   messages.insertAdjacentHTML('beforeend', markup);
 
   window.scrollTo(0, document.body.scrollHeight);
+  socket.auth.serverOffset = serverOffset;
 });

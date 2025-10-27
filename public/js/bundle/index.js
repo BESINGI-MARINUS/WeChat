@@ -748,7 +748,11 @@ settingsContainer.addEventListener('click', function(e) {
 //Send message with Socket.io
 const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
-const socket = io();
+const socket = io({
+    auth: {
+        serverOffset: 0
+    }
+});
 formMsg.addEventListener('submit', function(e) {
     e.preventDefault();
     const msg = inputMsg.value.trim();
@@ -757,7 +761,7 @@ formMsg.addEventListener('submit', function(e) {
     inputMsg.value = '';
 });
 const messages = document.querySelector('.section-messages-box');
-socket.on('chat message', (msg)=>{
+socket.on('chat message', (msg, serverOffset)=>{
     let hours = `${new Date().getHours()}`.padStart(2, '0');
     let mins = `${new Date().getMinutes()}`.padStart(2, '0');
     const time = +hours < 12 ? `${hours}:${mins} AM` : `${+hours - 12}:${mins} PM`;
@@ -769,6 +773,7 @@ socket.on('chat message', (msg)=>{
     `;
     messages.insertAdjacentHTML('beforeend', markup);
     window.scrollTo(0, document.body.scrollHeight);
+    socket.auth.serverOffset = serverOffset;
 });
 
 },{}]},["k2ZJO","f2QDv"], "f2QDv", "parcelRequire466a", {})

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema({
-  text: {
+  content: {
     type: String,
-    required: [true, 'A message must have texts'],
+    required: [true, 'A message must have content'],
     trim: true,
   },
   createdAt: { type: Date, default: Date.now },

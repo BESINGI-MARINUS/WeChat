@@ -1,5 +1,6 @@
 const http = require('http');
 const Message = require('./model/messageModel');
+const MessageClass = require('./utils/MessageClass.js');
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -21,17 +22,27 @@ const { Server } = require('socket.io');
 const server = http.createServer(app);
 const io = new Server(server, { connectionStateRecovery: {} }); //Deliver message when a user reconnects.
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   console.log(`New user connected with id: ${socket.id}`);
 
+  // socket.on('chat message', async (msg) => {
+  //   try {
+  //     const newMessage = await Message.create({ content: msg });
+
+  //     // Include the offset with the message. ie newMessage.id
+  //     io.emit('chat message', msg, newMessage.id);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // });
+
   socket.on('chat message', async (msg) => {
-    try {
-      await Message.create({ text: msg });
-      io.emit('chat message', msg);
-    } catch (err) {
-      console.log(err);
-    }
+    await new MessageClass(socket, io).createEmitMessage(msg);
   });
+
+  if (!socket.recovered) {
+    await new MessageClass(socket, io).sendMissedMessages();
+  }
 
   socket.on('disconnect', () => {
     console.log(`User ${socket.id} disconnected.`);
