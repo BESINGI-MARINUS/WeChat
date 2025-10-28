@@ -46,7 +46,9 @@ settingsContainer.addEventListener('click', function (e) {
 const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
 
-const socket = io({ auth: { serverOffset: 0 } });
+const socket = io({
+  auth: { serverOffset: 0, ackTimeout: 10 * 1000, retries: 3 },
+});
 
 formMsg.addEventListener('submit', function (e) {
   e.preventDefault();

@@ -1,11 +1,9 @@
 const http = require('http');
-const Message = require('./model/messageModel');
-const MessageClass = require('./utils/MessageClass.js');
-
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-dotenv.config({ path: './config.env' });
+const MessageClass = require('./utils/MessageClass.js');
 
+dotenv.config({ path: './config.env' });
 const app = require('./app');
 
 const DB = process.env.DATABASE.replace(
@@ -25,17 +23,6 @@ const io = new Server(server, { connectionStateRecovery: {} }); //Deliver messag
 io.on('connection', async (socket) => {
   console.log(`New user connected with id: ${socket.id}`);
 
-  // socket.on('chat message', async (msg) => {
-  //   try {
-  //     const newMessage = await Message.create({ content: msg });
-
-  //     // Include the offset with the message. ie newMessage.id
-  //     io.emit('chat message', msg, newMessage.id);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // });
-
   socket.on('chat message', async (msg) => {
     await new MessageClass(socket, io).createEmitMessage(msg);
   });
@@ -50,7 +37,6 @@ io.on('connection', async (socket) => {
 });
 
 const port = process.env.PORT || 3000;
-
 server.listen(port, () => {
   console.log(`Listening to request on port ${port}`);
 });

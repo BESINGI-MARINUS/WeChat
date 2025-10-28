@@ -750,7 +750,9 @@ const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
 const socket = io({
     auth: {
-        serverOffset: 0
+        serverOffset: 0,
+        ackTimeout: 10000,
+        retries: 3
     }
 });
 formMsg.addEventListener('submit', function(e) {
