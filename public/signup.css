@@ -1,0 +1,138 @@
+:root {
+  --color-cta: #6153cd;
+  --bg-color-sidenav: #1a1c21;
+  --bg-color-middle-sect: #212529;
+  --color-grey-1: #a4aab34b;
+  --color-grey-2: #878a93;
+  --color-grey-light: #ddd;
+  --color-grey-light-2: #bbb;
+  --bg-color-sidenav-icons: #24282c;
+  --bg-input: #292e34;
+}
+
+/* --- Global & Body Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--bg-color-middle-sect);
+  color: var(--color-grey-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* --- Form Container --- */
+.signup-container {
+  background-color: var(--bg-color-sidenav);
+  padding: 2.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 450px;
+}
+
+/* --- Header --- */
+.signup-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.signup-header h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.signup-header p {
+  color: var(--color-grey-2);
+  font-size: 0.9rem;
+}
+
+/* --- Form Elements --- */
+.signup-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-grey-light-2);
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--bg-input);
+  border: 1px solid var(--color-grey-1);
+  border-radius: 5px;
+  color: var(--color-grey-light);
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.signup-form input:focus {
+  outline: none;
+  border-color: var(--color-cta);
+  box-shadow: 0 0 0 3px hsla(246, 54%, 56%, 0.3);
+}
+
+/* --- Signup Button --- */
+.btn-signup {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: var(--color-cta);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-signup:hover {
+  background-color: #5145b3;
+}
+
+.btn-signup:active {
+  transform: scale(0.98);
+}
+
+/* --- Footer Link --- */
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-grey-2);
+}
+
+.login-link a {
+  color: var(--color-cta);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .signup-header h2 {
+    font-size: 1.6rem;
+  }
+}
