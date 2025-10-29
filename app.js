@@ -5,6 +5,7 @@ const morgan = require('morgan');
 
 const messageRoutes = require('./Routes/messageRoute');
 const userRoutes = require('./Routes/userRoute');
+const globalErrorHandler = require('./controller/errorController');
 
 const app = express();
 
@@ -22,5 +23,13 @@ app.use('/api/v1/users', userRoutes);
 app.get('/', (req, res, next) => {
   res.status(200).send('./public/index.html');
 });
+
+app.use((req, res, next) => {
+  const err = new Error(`Can't find ${req.originalUrl} on this server.`);
+  err.statusCode = 404;
+  next(err);
+});
+
+app.use(globalErrorHandler);
 
 module.exports = app;

@@ -79,6 +79,9 @@ ul {
 a {
   text-decoration: none;
 }
+input {
+  font-family: inherit;
+}
 
 .hidden {
   display: none;
@@ -382,7 +385,6 @@ a {
 .input-msg {
   flex: 0 0 50%;
   font-size: inherit;
-  font-family: inherit;
   border-radius: 5px;
 }
 

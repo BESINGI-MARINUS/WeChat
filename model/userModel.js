@@ -20,7 +20,11 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
-  password: { type: String, required: [true, 'Please enter your password'] },
+  password: {
+    type: String,
+    required: [true, 'Please enter your password'],
+    select: false,
+  },
   passwordConfirm: {
     type: String,
     required: [true, 'Please confirm your password'],
