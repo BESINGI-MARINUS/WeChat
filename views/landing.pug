@@ -1,0 +1,23 @@
+extends _base
+block append head
+  link(rel="preconnect", href="https://fonts.googleapis.com")
+  link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap", rel="stylesheet")
+  link(rel="stylesheet", href="/landing.css")
+block content
+  header.navbar
+    a.logo(href="#") LinkUp
+    nav.nav-links
+      a(href="#") Features
+      a(href="#") About Us
+      a(href="#") Contact
+    div
+      a.btn-primary(href="/login") Login
+  main.hero
+    .hero-content
+      h1 Connect Instantly. Chat Freely. LinkUp.
+      p Experience seamless communication with your friends, family, and colleagues. LinkUp offers a fast, secure, and intuitive way to stay connected.
+      .cta-buttons
+        a.btn-hero.btn-signup(href="/signup") Get Started - It&apos;s Free!
+  footer.footer
+    | &amp;copy; 2023 LinkUp Chat App. All rights reserved.

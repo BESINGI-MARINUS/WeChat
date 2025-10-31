@@ -1,4 +1,5 @@
 // "use strict";
+import { login } from './login';
 
 // ELEMENTS
 const leftIconsContainer = document.querySelector('.side-icons');
@@ -9,38 +10,39 @@ const settingsItem = document.querySelector('.setting-item');
 const middleSection = document.querySelector('.friends-pane');
 
 // ==================== EVENT HANDLERS =======================
+if (leftIconsContainer)
+  leftIconsContainer.addEventListener('click', function (e) {
+    const clicked = e.target.closest('.side-icon');
+    if (!clicked) return;
+    if (e.target.classList.contains('profile-img')) return;
+    if (clicked.classList.contains('side-icon-1')) return;
+    sideIconContainers.forEach((c) => c.classList.remove('side-nav-active'));
+    sideLeftIcons.forEach((i) => i.classList.remove('side-nav-active-icon'));
+    clicked.classList.add('side-nav-active');
+    clicked.firstElementChild.classList.add('side-nav-active-icon');
 
-leftIconsContainer.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.side-icon');
-  if (!clicked) return;
-  if (e.target.classList.contains('profile-img')) return;
-  if (clicked.classList.contains('side-icon-1')) return;
-  sideIconContainers.forEach((c) => c.classList.remove('side-nav-active'));
-  sideLeftIcons.forEach((i) => i.classList.remove('side-nav-active-icon'));
-  clicked.classList.add('side-nav-active');
-  clicked.firstElementChild.classList.add('side-nav-active-icon');
+    const id = clicked.dataset.tab;
+    if (!id) return;
 
-  const id = clicked.dataset.tab;
-  if (!id) return;
+    document
+      .querySelectorAll('.middle-content')
+      .forEach((s) => s.classList.add('hidden'));
 
-  document
-    .querySelectorAll('.middle-content')
-    .forEach((s) => s.classList.add('hidden'));
-
-  document.getElementById(`content--${id}`).classList.remove('hidden');
-});
+    document.getElementById(`content--${id}`).classList.remove('hidden');
+  });
 
 // MANAGING ACCOUNT SETTINGS
 
-settingsContainer.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.setting-item');
-  const icon = clicked.querySelector('.icon-right');
-  icon.classList.toggle('rotate-icon');
-  icon.style.transition = 'all .5s';
-  const id = document
-    .querySelector(`#hidden--${clicked.dataset.val}`)
-    .classList.toggle('hidden');
-});
+if (settingsContainer)
+  settingsContainer.addEventListener('click', function (e) {
+    const clicked = e.target.closest('.setting-item');
+    const icon = clicked.querySelector('.icon-right');
+    icon.classList.toggle('rotate-icon');
+    icon.style.transition = 'all .5s';
+    const id = document
+      .querySelector(`#hidden--${clicked.dataset.val}`)
+      .classList.toggle('hidden');
+  });
 
 //Send message with Socket.io
 const formMsg = document.querySelector('.form-msg');
@@ -50,13 +52,14 @@ const socket = io({
   auth: { serverOffset: 0, ackTimeout: 10 * 1000, retries: 3 },
 });
 
-formMsg.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const msg = inputMsg.value.trim();
-  if (!msg) return;
-  socket.emit('chat message', msg);
-  inputMsg.value = '';
-});
+if (formMsg)
+  formMsg.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const msg = inputMsg.value.trim();
+    if (!msg) return;
+    socket.emit('chat message', msg);
+    inputMsg.value = '';
+  });
 
 const messages = document.querySelector('.section-messages-box');
 socket.on('chat message', (msg, serverOffset) => {
@@ -66,13 +69,42 @@ socket.on('chat message', (msg, serverOffset) => {
     +hours < 12 ? `${hours}:${mins} AM` : `${+hours - 12}:${mins} PM`;
 
   const markup = `
-    <div class="sender-message-box">
-    <p class="message-reciever">${msg}</p>
-    <p><span>&#10004</span>${time}</p>
-  </div>
-    `;
+      <div class="sender-message-box">
+      <p class="message-reciever">${msg}</p>
+      <p><span>&#10004</span>${time}</p>
+    </div>
+      `;
   messages.insertAdjacentHTML('beforeend', markup);
 
   window.scrollTo(0, document.body.scrollHeight);
   socket.auth.serverOffset = serverOffset;
 });
+
+if (formMsg)
+  formMsg.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const msg = inputMsg.value.trim();
+    if (!msg) return;
+    socket.emit('chat message', msg);
+    inputMsg.value = '';
+  });
+
+const loginForm = document.querySelector('#login-form');
+if (loginForm) {
+  loginForm.addEventListener('submit', async function (e) {
+    'Login Form Submited';
+    e.preventDefault();
+    document.getElementById('login').style.opacity = '0.5';
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // clear input field
+    document.getElementById('email').value = document.getElementById(
+      'password'
+    ).value = '';
+    document.getElementById('login').textContent = 'Connecting...';
+    document.getElementById('login').style.opacity = '0.5';
+
+    await login(email, password);
+  });
+}

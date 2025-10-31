@@ -1,0 +1,326 @@
+extends _base
+block append head
+  link(rel="stylesheet", href="main.css")
+  // <link rel="stylesheet" href="./fontawesome/css/all.css">
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css", integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==", crossorigin="anonymous", referrerpolicy="no-referrer")
+block content
+  .container
+    // side navigation icons
+    nav.side-nav
+      ul.side-icons
+        li.side-icon.side-icon-1
+          svg.icon.icon-message
+            use(xlink:href="sprite.svg#icon-bubbles4")
+        li.side-icon(data-tab="2")
+          svg.icon.nav-icon
+            use(xlink:href="./sprite.svg#icon-user")
+        li.side-icon.side-message-box.side-nav-active(data-tab="1")
+          svg.icon.nav-icon.side-nav-active-icon
+            use(xlink:href="./sprite.svg#icon-message")
+          span.notification 9
+        li.side-icon
+          svg.icon.nav-icon
+            use(xlink:href="./sprite.svg#icon-address-book")
+        li.side-icon
+          svg.icon.nav-icon
+            use(xlink:href="./sprite.svg#icon-bookmark")
+        li.side-icon(data-tab="3")
+          svg.icon.nav-icon
+            use(xlink:href="./sprite.svg#icon-cog")
+        li.side-icon.side-icon-moon
+          svg.icon
+            use(xlink:href="./sprite.svg#icon-moon")
+        li.profile-img-box
+          img.profile-img(src="./img/cecile.jpg", alt="profile photo ")
+    // pane to display List of chats
+    aside.friends-pane
+      section#content--1.section-chatlist.middle-content
+        header.header-chatlist
+          h1.heading-primary
+            | messages
+            span.num-of-message (237)
+          form.form(action="#")
+            svg.search-icon
+              use(xlink:href="./sprite.svg#icon-search")
+            input.input.input-search(type="text", placeholder="Search here...")
+        section.friends-list
+          ul.items
+            h2.heading-secondary favourites
+            li.item.chat-active
+              .profile-img-box
+                img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Mr Excellent
+                p.message-body I will be on my way soon...
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/biggy.jpeg", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Royal Damilola
+                p.message-body You be mumu man😂😂
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Wanyu Blaise
+                p.message-body Yh I&apos;m the PHP plug😎
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/shinelda.png", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Opeh Sandrine
+                p.message-body Mr Kah said that na...
+          ul.items
+            h2.heading-secondary direct messages
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/cecile.jpg", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Engr Caleb
+                p.message-body My name is synonymous to python😎
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Tipa Brandon
+                p.message-body Ok good to know😍
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Awudu Meleng
+                p.message-body wah papa 🤣🤣🤣🤣
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/shinelda.png", alt="profile photo")
+                span.green-dot
+              .text-box
+                h3.heading-tertiary Marinus Silva
+                p.message-body What I do for a living? Programming.
+          ul.items
+            h2.heading-secondary channels
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/cecile.jpg", alt="profile photo")
+              .text-box
+                h3.heading-tertiary LMU socials
+                p.message-body Dr students...
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+              .text-box
+                h3.heading-tertiary LMU Sports
+                p.message-body Ok good to know😍
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
+              .text-box
+                h3.heading-tertiary Study group
+                p.message-body wah papa 🤣🤣🤣🤣
+            li.item
+              .profile-img-box
+                img.profile-img(src="./img/shinelda.png", alt="profile photo")
+              .text-box
+                h3.heading-tertiary Programming Hub
+                p.message-body What I do for a living? Programming.
+      section#content--2.section-profile.middle-content.hidden
+        .profile-main
+          .cover-img-box
+            img(src="./img/marinus.jpg", alt="cover photo")
+            #profile.profile-img-box
+              img.profile-photo(src="./img/shinelda.png", alt="profile photo")
+          .proffession
+            h2.heading--secondary Besingi Marinus
+            p.description Front end Developer
+        .profile-description
+          p.paragraph
+            | A professional profile is an introductory section on your resume that highlights your relevant qualifications and skills.
+          ul.details
+            li.detail
+              svg(class="icon detail__icon")
+                use(xlink:href="./sprite.svg#icon-user")
+              span(class="detail__name") Besingi Marinus
+            li.detail
+              svg(class="icon detail__icon")
+                use(xlink:href="./sprite.svg#icon-phone")
+              span(class="detail__name") +237 677-77-77-77
+            li.detail
+              svg(class="icon detail__icon")
+                use(xlink:href="./sprite.svg#icon-bubbles4")
+              span(class="detail__name") example@gmail.com
+            li.detail
+              svg(class="icon detail__icon")
+                use(xlink:href="./sprite.svg#icon-bookmark")
+              span(class="detail__name") Buea, Cameroon
+          .media
+            div(class="media__text-box")
+              h5.heading-tertiry MEDIA
+            div(class="media__row")
+              .img-box
+                img(src="./img/biggy.jpeg", alt="user media image", class="media__img")
+              .img-box
+                img(src="./img/blessing - Copy (2).jpg", alt="user media image", class="media__img")
+              .img-box
+                img(src="./img/cecile.jpg", alt="user media image", class="media__img")
+          .media
+      section#content--3.section-setting.section-profile.middle-content.hidden
+        .profile-main
+          .cover-img-box
+            img(src="./img/marinus.jpg", alt="cover photo")
+            #profile.profile-img-box...........profile-img-box-setting
+              img.profile-photo(src="./img/shinelda.png", alt="profile photo")
+              .camera-box
+                i.fa.fa-camera
+          ul.setting-items
+            li.setting-item(data-val="1")
+              div(class="setting__row")
+                i.fa.fa-user.icon-left
+                h3.heading-tertiary Personal Info
+                i.fa.fa-angle-down.icon-right
+            form#hidden--1.form.hidden(action="#")
+              div(class="form__row")
+                label Name
+                input.input(type="text", value="Mr Excellent")
+              div(class="form__row")
+                label Email
+                input.input(type="text", value="example1@gmail.com")
+              div(class="form__row")
+                label phone no
+                input.input(type="text", value="+237 677-77-77-77")
+              div(class="form__row")
+                label location
+                input.input(type="text", value="Nevada, USA")
+            li.setting-item(data-val="2")
+              div(class="setting__row")
+                i.fa.fa-lock.icon-left
+                h3.heading-tertiary Privacy
+                i.fa.fa-angle-down.icon-right
+            #hidden--2.hidden
+              h3.heading-tertiary.setting-heading-main Who can see my personal info
+              ul.privacies
+                li.privacy
+                  h3.heading-tertiary Profile photo
+                  select.dropdown
+                    option(value="Everyone") Everyone
+                    option(value="Everyone") Selected
+                    option(value="Everyone") Nobody
+                li.privacy
+                  h3.heading-tertiary Status
+                  select.dropdown
+                    option(value="Everyone") Everyone
+                    option(value="Everyone") Selected
+                    option(value="Everyone") Nobody
+                li.privacy
+                  h3.heading-tertiary Groups
+                  select.dropdown
+                    option(value="Everyone") Everyone
+                    option(value="Everyone") Selected
+                    option(value="Everyone") Nobody
+                li.privacy
+                  h3.heading-tertiary Last seen
+                  input#last-seen.hidden.input-hidden(type="checkbox")
+                  label.custom-checkbox(for="last-seen") &amp;nbsp;
+                li.privacy
+                  h3.heading-tertiary Online
+                  input#online.hidden.input-hidden(type="checkbox")
+                  label.custom-checkbox(for="online") &amp;nbsp;
+            li.setting-item(data-val="3")
+              div(class="setting__row")
+                i.fas.fa-shield-alt.icon-left
+                h3.heading-tertiary Security
+                i.fa.fa-angle-down.icon-right
+            #hidden--3.hidden
+              ul.privacies
+                li.privacy
+                  h3.heading-tertiary Show security notification
+                  input#sec-not.hidden.input-hidden(type="checkbox")
+                  label.custom-checkbox(for="sec-not") &amp;nbsp;
+            li.setting-item(data-val="4")
+              div(class="setting__row")
+                i.fa.fa-info-circle.icon-left
+                h3.heading-tertiary Help
+                i.fa.fa-angle-down.icon-right
+            #hidden--4.hidden
+              ul.privacies
+                li.privacy
+                  h3.heading-tertiary FAQs
+                li.privacy
+                  h3.heading-tertiary Contacts
+                li.privacy
+                  h3.heading-tertiary Terms and privacy policy
+    // ================================================
+    main.main
+      header.header
+        .item
+          .profile-img-box
+            img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+            span.green-dot
+          .text-box
+            h3.heading-tertiary Mr Excellent
+            p.message-body Online
+        .header-iconbox
+          .user-nav-icons
+            ul.items.icons-flex-container
+              li.item
+                svg.icon
+                  use(xlink:href="./sprite.svg#icon-search")
+              li.item
+                svg.icon
+                  use(xlink:href="./sprite.svg#icon-phone")
+              li.item
+                svg.icon
+                  use(xlink:href="./sprite.svg#icon-video-camera")
+              li.item
+                svg.icon
+                  use(xlink:href="./sprite.svg#icon-bookmark")
+              li.item
+                svg.icon
+                  use(xlink:href="./sprite.svg#icon-notification")
+              li.item
+                svg.icon
+                  use(xlink:href="./sprite.svg#icon-dots-three-vertical")
+      section.section-messages-box
+        .sender-message-box
+          p.message-sender Well I don&apos;t mind. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, maxime deserunt consectetur, molestiae eaque iste placeat explicabo numquam officiis exercitationem, culpa a possimus consequuntur facilis maiores nulla? Similique, ab quo?
+          p
+            span &amp;#10004&amp;#10004
+            | 5:42 AM
+        .reciever-message-box
+          p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+          p
+            span &amp;#10004
+            | 5:42 PM
+        .reciever-message-box
+          p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+          p
+            span &amp;#10004
+            | 5:42 PM
+        .sender-message-box
+          p.message-sender Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+          p
+            span &amp;#10004
+            | 5:42 PM
+      .section-send-msg
+        .row
+          svg.icon
+            use(xlink:href="./sprite.svg#icon-dots-three-horizontal")
+          svg.icon
+            use(xlink:href="./sprite.svg#icon-emoji-happy")
+          form.form-msg
+            input.input.input-msg(type="text", placeholder="Type your message...")
+            p Mr Excellent is typing 
+              span.dot.dot1
+              span.dot.dot2
+              span.dot.dot3
+            svg.icon
+              use(xlink:href="./sprite.svg#icon-mic")
+            button
+              svg.icon.icon-send
+                use(xlink:href="./sprite.svg#icon-paper-plane")

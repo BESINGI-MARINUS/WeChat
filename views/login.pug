@@ -1,23 +1,19 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Login - LinkUp
-    link(rel="stylesheet", href="signup.css")
-  body
-    .signup-container
-      .signup-header
-        h2 Login to Your Account
-        p Join the conversation today!
-      form.signup-form(action="#", method="POST")
-        .form-group
-          label(for="email") Email
-          input#email(type="email", name="email", required, placeholder="you@example.com")
-        .form-group
-          label(for="password") Password
-          input#password(type="password", name="password", required, minlength="8", placeholder="Enter your password")
-        button.btn-signup(type="submit") Login
-      p.login-link
-        | Don't have an account?
-        a(href="/signup") Sign up
+extends _base
+block append head
+  link(rel="stylesheet", href="signup.css")
+block content
+  .signup-container
+    .signup-header
+      h2 Login to Your Account
+      p Join the conversation today!
+    form.signup-form#login-form
+      .form-group
+        label(for="email") Email
+        input#email(type="email", name="email", required, placeholder="you@example.com")
+      .form-group
+        label(for="password") Password
+        input#password(type="password", name="password", required, minlength="8", placeholder="Enter your password")
+      button.btn-signup#login(type="submit") Login
+    p.login-link
+      | Don't have an account?
+      a(href="/signup") Sign up

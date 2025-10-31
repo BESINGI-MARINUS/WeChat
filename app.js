@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'pug');
-app.set('views', `${path.join(__dirname, 'view')}`);
+app.set('views', `${path.join(__dirname, 'views')}`);
 
 // Body parcer
 app.use(express.json());
@@ -24,9 +24,9 @@ app.use('/api/v1/messages', messageRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/', viewRoutes);
 
-app.get('/', (req, res, next) => {
-  res.status(200).send('./public/index.html');
-});
+// app.get('/', (req, res, next) => {
+//   res.status(200).send('./public/index.html');
+// });
 
 app.use((req, res, next) => {
   const err = new Error(`Can't find ${req.originalUrl} on this server.`);
