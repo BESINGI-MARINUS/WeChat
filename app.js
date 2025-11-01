@@ -24,10 +24,6 @@ app.use('/api/v1/messages', messageRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/', viewRoutes);
 
-// app.get('/', (req, res, next) => {
-//   res.status(200).send('./public/index.html');
-// });
-
 app.use((req, res, next) => {
   const err = new Error(`Can't find ${req.originalUrl} on this server.`);
   err.statusCode = 404;

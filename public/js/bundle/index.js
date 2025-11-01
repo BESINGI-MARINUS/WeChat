@@ -715,7 +715,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"f2QDv":[function(require,module,exports,__globalThis) {
 // "use strict";
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _login = require("./login");
+var _socketClass = require("./SocketClass");
+var _socketClassDefault = parcelHelpers.interopDefault(_socketClass);
 // ELEMENTS
 const leftIconsContainer = document.querySelector('.side-icons');
 const sideIconContainers = document.querySelectorAll('.side-icon');
@@ -769,21 +772,14 @@ socket.on('chat message', (msg, serverOffset)=>{
     let mins = `${new Date().getMinutes()}`.padStart(2, '0');
     const time = +hours < 12 ? `${hours}:${mins} AM` : `${+hours - 12}:${mins} PM`;
     const markup = `
-      <div class="sender-message-box">
+    <div class="sender-message-box">
       <p class="message-reciever">${msg}</p>
       <p><span>&#10004</span>${time}</p>
     </div>
       `;
-    messages.insertAdjacentHTML('beforeend', markup);
+    if (messages) messages.insertAdjacentHTML('beforeend', markup);
     window.scrollTo(0, document.body.scrollHeight);
     socket.auth.serverOffset = serverOffset;
-});
-if (formMsg) formMsg.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const msg = inputMsg.value.trim();
-    if (!msg) return;
-    socket.emit('chat message', msg);
-    inputMsg.value = '';
 });
 const loginForm = document.querySelector('#login-form');
 if (loginForm) loginForm.addEventListener('submit', async function(e) {
@@ -792,25 +788,58 @@ if (loginForm) loginForm.addEventListener('submit', async function(e) {
     document.getElementById('login').style.opacity = '0.5';
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    // clear input field
-    document.getElementById('email').value = document.getElementById('password').value = '';
+    // clear input fields
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password').blur();
     document.getElementById('login').textContent = 'Connecting...';
     document.getElementById('login').style.opacity = '0.5';
     await (0, _login.login)(email, password);
 });
+// Signup
+const signupForm = document.getElementById('signup-form');
+if (signupForm) signupForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const credentials = {};
+    const formData = new FormData(this);
+    for (const [key, value] of formData)credentials[key] = value;
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('confirm-password').value = '';
+    document.getElementById('confirm-password').blur();
+    document.getElementById('btn-signup').textContent = 'Connecting...';
+    document.getElementById('btn-signup').style.opacity = '0.5';
+    await (0, _login.signup)(credentials);
+});
 
-},{"./login":"7yHem"}],"7yHem":[function(require,module,exports,__globalThis) {
+},{"./login":"7yHem","./SocketClass":"8HPqo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7yHem":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "login", ()=>login);
+parcelHelpers.export(exports, "signup", ()=>signup);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 const login = async (email, password)=>{
-    const res = await (0, _axiosDefault.default).post('/api/v1/users/login', {
-        email,
-        password
-    });
-    if (res.data.status === 'error') window.setTimeout(()=>location.assign('/linkup'), 1500);
+    try {
+        await (0, _axiosDefault.default).post('/api/v1/users/login', {
+            email,
+            password
+        });
+        window.setTimeout(()=>location.assign('/linkup'), 1500);
+    } catch (error) {
+        alert(error.response.data.message);
+        window.setTimeout(()=>location.reload(), 1000);
+    }
+};
+const signup = async (credentials)=>{
+    try {
+        await (0, _axiosDefault.default).post('/api/v1/users/signup', credentials);
+        window.setTimeout(()=>location.assign('/linkup'), 1500);
+    } catch (error) {
+        alert(error.response.data.message);
+        window.setTimeout(()=>location.reload(), 1000);
+    }
 };
 
 },{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports,__globalThis) {
@@ -5746,6 +5775,15 @@ Object.entries(HttpStatusCode).forEach(([key, value])=>{
 });
 exports.default = HttpStatusCode;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["k2ZJO","f2QDv"], "f2QDv", "parcelRequire466a", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8HPqo":[function(require,module,exports,__globalThis) {
+class SocketClass {
+    constructor(socket){
+        this.socket = socket;
+    }
+    emitMsgToServer() {}
+}
+module.exports = SocketClass;
+
+},{}]},["k2ZJO","f2QDv"], "f2QDv", "parcelRequire466a", {})
 
 //# sourceMappingURL=index.js.map

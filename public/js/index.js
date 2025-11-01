@@ -1,5 +1,6 @@
 // "use strict";
-import { login } from './login';
+import { login, signup } from './login';
+import SocketClass from './SocketClass';
 
 // ELEMENTS
 const leftIconsContainer = document.querySelector('.side-icons');
@@ -69,25 +70,16 @@ socket.on('chat message', (msg, serverOffset) => {
     +hours < 12 ? `${hours}:${mins} AM` : `${+hours - 12}:${mins} PM`;
 
   const markup = `
-      <div class="sender-message-box">
+    <div class="sender-message-box">
       <p class="message-reciever">${msg}</p>
       <p><span>&#10004</span>${time}</p>
     </div>
       `;
-  messages.insertAdjacentHTML('beforeend', markup);
+  if (messages) messages.insertAdjacentHTML('beforeend', markup);
 
   window.scrollTo(0, document.body.scrollHeight);
   socket.auth.serverOffset = serverOffset;
 });
-
-if (formMsg)
-  formMsg.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const msg = inputMsg.value.trim();
-    if (!msg) return;
-    socket.emit('chat message', msg);
-    inputMsg.value = '';
-  });
 
 const loginForm = document.querySelector('#login-form');
 if (loginForm) {
@@ -98,13 +90,37 @@ if (loginForm) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // clear input field
-    document.getElementById('email').value = document.getElementById(
-      'password'
-    ).value = '';
+    // clear input fields
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password').blur();
     document.getElementById('login').textContent = 'Connecting...';
     document.getElementById('login').style.opacity = '0.5';
 
     await login(email, password);
+  });
+}
+
+// Signup
+const signupForm = document.getElementById('signup-form');
+if (signupForm) {
+  signupForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const credentials = {};
+    const formData = new FormData(this);
+
+    for (const [key, value] of formData) {
+      credentials[key] = value;
+    }
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('confirm-password').value = '';
+    document.getElementById('confirm-password').blur();
+    document.getElementById('btn-signup').textContent = 'Connecting...';
+    document.getElementById('btn-signup').style.opacity = '0.5';
+
+    await signup(credentials);
   });
 }
