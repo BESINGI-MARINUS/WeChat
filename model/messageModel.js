@@ -7,7 +7,11 @@ const messageSchema = new mongoose.Schema({
     trim: true,
   },
   createdAt: { type: Date, default: Date.now },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: [true, 'A mesage must belong to a user'],
+  },
   room: { type: mongoose.Schema.ObjectId, ref: 'Room' },
 });
 

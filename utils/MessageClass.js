@@ -45,7 +45,7 @@ class MessageClass {
         this.socket.emit('chat message', doc.content, doc.id);
       }
     } catch (e) {
-      console.error('Error fetching missed messages:', e);
+      console.error('🚨🚨🚨 Error fetching missed messages:', e);
       throw e;
     }
   }

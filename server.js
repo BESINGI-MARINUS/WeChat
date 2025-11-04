@@ -24,11 +24,19 @@ io.on('connection', async (socket) => {
   console.log(`New user connected with id: ${socket.id}`);
 
   socket.on('chat message', async (msg) => {
-    await new MessageClass(socket, io).createEmitMessage(msg);
+    try {
+      await new MessageClass(socket, io).createEmitMessage(msg);
+    } catch (err) {
+      console.log(err.message);
+    }
   });
 
   if (!socket.recovered) {
-    await new MessageClass(socket, io).sendMissedMessages();
+    try {
+      await new MessageClass(socket, io).sendMissedMessages();
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   socket.on('disconnect', () => {

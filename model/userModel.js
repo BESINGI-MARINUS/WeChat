@@ -50,6 +50,18 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+userSchema.methods.passwordChangedAfterTokenIssue = function (jwtTimeStamp) {
+  if (this.passwordChangedAt) {
+    const timeItWasChanged = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    return jwtTimeStamp > timeItWasChanged;
+  }
+  return false;
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

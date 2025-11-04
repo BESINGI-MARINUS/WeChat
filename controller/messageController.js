@@ -1,5 +1,7 @@
 const Message = require('../model/messageModel');
 
+exports.createMessage = (req, res, next) => {};
+
 exports.getAllMessages = async (req, res, next) => {
   try {
     const messages = await Message.find();
