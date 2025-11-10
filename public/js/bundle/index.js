@@ -785,7 +785,6 @@ const loginForm = document.querySelector('#login-form');
 if (loginForm) loginForm.addEventListener('submit', async function(e) {
     'Login Form Submited';
     e.preventDefault();
-    document.getElementById('login').style.opacity = '0.5';
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     // clear input fields

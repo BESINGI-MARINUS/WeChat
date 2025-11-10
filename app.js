@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const messageRoutes = require('./Routes/messageRoute');
 const userRoutes = require('./Routes/userRoute');
@@ -19,6 +20,7 @@ app.set('views', `${path.join(__dirname, 'views')}`);
 
 // Body parcer
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/api/v1/messages', messageRoutes);
 app.use('/api/v1/users', userRoutes);

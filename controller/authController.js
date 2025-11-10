@@ -11,13 +11,23 @@ const signToken = (id) =>
   });
 const sendResponse = (res, statusCode, user) => {
   const token = signToken(user._id);
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true, // Make it so that the browser/client cannot modify the cookie
+  };
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
+  res.cookie('jwt', token, cookieOptions);
+  user.password = undefined; // Remove password from the response
   res.status(statusCode).json({
     status: 'success',
     token,
     data: { user },
   });
 };
+
 exports.signup = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
 
@@ -72,5 +82,34 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // 5. Grant user access to protected route and put user on the request object
   req.user = user;
+
+  next();
+});
+
+// Only for rendered pages
+exports.isLogedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    try {
+      // 2. Verify token.
+      const decodedPayload = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRETE
+      );
+
+      // 3.Check if user still exists
+      const currentUser = await User.findById(decodedPayload.id);
+      if (!currentUser) return next();
+
+      // 4. Check if user changed password after token was issued.
+      if (currentUser.passwordChangedAfterTokenIssue(decoded.iat))
+        return next();
+
+      // Set user
+      res.locals.user = currentUser;
+      return next();
+    } catch (err) {
+      return next();
+    }
+  }
   next();
 });
