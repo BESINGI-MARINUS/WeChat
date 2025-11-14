@@ -55,6 +55,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies) {
+    token = req.cookies.jwt;
   }
   if (!token)
     return next(
@@ -97,11 +99,11 @@ exports.isLogedIn = catchAsync(async (req, res, next) => {
       );
 
       // 3.Check if user still exists
-      const currentUser = await User.findById(decodedPayload.id);
+      const currentUser = await User.findById(decodedPayload.id).select('-__v');
       if (!currentUser) return next();
 
       // 4. Check if user changed password after token was issued.
-      if (currentUser.passwordChangedAfterTokenIssue(decoded.iat))
+      if (currentUser.passwordChangedAfterTokenIssue(decodedPayload.iat))
         return next();
 
       // Set user

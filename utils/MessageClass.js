@@ -8,7 +8,10 @@ class MessageClass {
 
   async createEmitMessage(msg) {
     try {
-      const newMessage = await Message.create({ content: msg });
+      const newMessage = await Message.create({
+        content: msg,
+        user: this.socket.userId,
+      });
 
       // Include the offset with the message. ie newMessage.id
       this.io.emit('chat message', msg, newMessage.id);

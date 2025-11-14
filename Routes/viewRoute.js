@@ -4,9 +4,9 @@ const authController = require('../controller/authController');
 
 const router = express();
 
-router.get('/', authController.isLogedIn, viewController.getLandingPage);
+router.get('/', viewController.getLandingPage);
 router.get('/signup', viewController.getSignup);
 router.get('/login', viewController.getlogin);
-router.get('/linkup', viewController.getChatPage);
+router.get('/linkup', authController.isLogedIn, viewController.getChatPage);
 
 module.exports = router;

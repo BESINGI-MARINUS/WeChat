@@ -17,12 +17,21 @@ mongoose
   .catch((err) => console.log(err));
 
 const { Server } = require('socket.io');
+const AppError = require('./utils/AppError.js');
 const server = http.createServer(app);
 const io = new Server(server, { connectionStateRecovery: {} }); //Deliver message when a user reconnects.
 
-io.on('connection', async (socket) => {
-  console.log(`New user connected with id: ${socket.id}`);
+io.use((socket, next) => {
+  const userId = socket.handshake.auth.user;
+  console.log(userId);
 
+  if (!userId) return next(new AppError('Invalid user ID', 401));
+
+  socket.userId = userId;
+  next();
+});
+
+io.on('connection', async (socket) => {
   socket.on('chat message', async (msg) => {
     try {
       await new MessageClass(socket, io).createEmitMessage(msg);

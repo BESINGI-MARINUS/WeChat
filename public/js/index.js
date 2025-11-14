@@ -50,7 +50,12 @@ const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
 
 const socket = io({
-  auth: { serverOffset: 0, ackTimeout: 10 * 1000, retries: 3 },
+  auth: {
+    serverOffset: 0,
+    ackTimeout: 10 * 1000,
+    retries: 3,
+    user: settingsContainer && window?.APP_DATA.currentUser,
+  },
 });
 
 if (formMsg)

@@ -10,7 +10,7 @@ const messageSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: [true, 'A mesage must belong to a user'],
+    // required: [true, 'A mesage must belong to a user'],
   },
   room: { type: mongoose.Schema.ObjectId, ref: 'Room' },
 });

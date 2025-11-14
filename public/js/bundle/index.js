@@ -756,7 +756,8 @@ const socket = io({
     auth: {
         serverOffset: 0,
         ackTimeout: 10000,
-        retries: 3
+        retries: 3,
+        user: settingsContainer && window?.APP_DATA.currentUser
     }
 });
 if (formMsg) formMsg.addEventListener('submit', function(e) {

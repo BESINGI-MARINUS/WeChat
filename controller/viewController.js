@@ -1,3 +1,5 @@
+const Message = require('../model/messageModel');
+
 exports.getSignup = (req, res, next) => {
   res.status(200).render('signup', { title: 'Sign Up - LinkUp' });
 };
@@ -11,5 +13,6 @@ exports.getLandingPage = (req, res, next) => {
 };
 
 exports.getChatPage = (req, res, next) => {
-  res.status(200).render('chatsPage', { title: 'LinkUp' });
+  const messages = Message.find();
+  res.status(200).render('chatsPage', { title: 'LinkUp', messages });
 };

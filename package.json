@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "parcel:dev": "parcel ./public/js/index.js --dist-dir ./public/js/bundle",
-    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundle "
+    "build": "parcel build ./public/js/index.js --dist-dir ./public/js/bundle ",
+    "debug": "ndb server.js"
   },
   "author": "Besingi Marinus",
   "license": "ISC",
