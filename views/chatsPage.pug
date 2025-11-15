@@ -286,43 +286,48 @@ block content
                 svg.icon
                   use(xlink:href="./sprite.svg#icon-dots-three-vertical")
       section.section-messages-box
-        .sender-message-box
-          p.message-sender Well I don&apos;t mind. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, maxime deserunt consectetur, molestiae eaque iste placeat explicabo numquam officiis exercitationem, culpa a possimus consequuntur facilis maiores nulla? Similique, ab quo?
-          p
-            span &#10004&#10004
-            | 5:42 AM
-        .reciever-message-box
-          p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
-          p
-            span &#10004
-            | 5:42 PM
-        .reciever-message-box
-          p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
-          p
-            span &#10004
-            | 5:42 PM
-        .sender-message-box
-          p.message-sender Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
-          p
-            span &#10004
-            | 5:42 PM
-      .section-send-msg
-        .row
-          svg.icon
-            use(xlink:href="./sprite.svg#icon-dots-three-horizontal")
-          svg.icon
-            use(xlink:href="./sprite.svg#icon-emoji-happy")
-          form.form-msg
-            input.input.input-msg(type="text", placeholder="Type your message...")
-            p Mr Excellent is typing 
-              span.dot.dot1
-              span.dot.dot2
-              span.dot.dot3
-            svg.icon
-              use(xlink:href="./sprite.svg#icon-mic")
-            button
-              svg.icon.icon-send
-                use(xlink:href="./sprite.svg#icon-paper-plane")
+        .welcome
+          h3.welcome_heading
+            span Welcome
+      //- - const className = messages.user.id === user.id?'.sender-message-box' : '.reciever-message-box';
+      //-   each message in messages
+      //-     className
+      //-       p.message-sender= message.content
+      //-       p
+      //-         span &#10004&#10004
+      //-         | 5:42 AM
+      //-   .reciever-message-box
+      //-     p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+      //-     p
+      //-         span &#10004
+      //-         | 5:42 PM
+      //-   .reciever-message-box
+      //-     p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+      //-     p
+      //-       span &#10004
+      //-       | 5:42 PM
+      //-   .sender-message-box
+      //-     p.message-sender Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+      //-     p
+      //-       span &#10004
+      //-       | 5:42 PM
+      //- .section-send-msg
+      //-   .row
+      //-     svg.icon
+      //-       use(xlink:href="./sprite.svg#icon-dots-three-horizontal")
+      //-     svg.icon
+      //-       use(xlink:href="./sprite.svg#icon-emoji-happy")
+      //-     form.form-msg
+      //-       input.input.input-msg(type="text", placeholder="Type your message...")
+      //-       p Mr Excellent is typing 
+      //-         span.dot.dot1
+      //-         span.dot.dot2
+      //-         span.dot.dot3
+      //-       svg.icon
+      //-         use(xlink:href="./sprite.svg#icon-mic")
+      //-       button
+      //-         svg.icon.icon-send
+      //-           use(xlink:href="./sprite.svg#icon-paper-plane")
   script.
     window.APP_DATA = {
       currentUser: !{JSON.stringify(user.id)}

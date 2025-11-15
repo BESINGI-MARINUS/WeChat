@@ -80,7 +80,7 @@ socket.on('chat message', (msg, serverOffset) => {
       <p><span>&#10004</span>${time}</p>
     </div>
       `;
-  if (messages) messages.insertAdjacentHTML('beforeend', markup);
+  // if (messages) messages.insertAdjacentHTML('beforeend', markup);
 
   window.scrollTo(0, document.body.scrollHeight);
   socket.auth.serverOffset = serverOffset;

@@ -256,7 +256,6 @@ input {
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--color-grey-1);
   display: flex;
-  /* align-items: center; */
   justify-content: space-between;
 }
 
@@ -411,6 +410,18 @@ input {
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-grey-2);
   border-radius: 1rem;
+}
+
+/* ====== WELCOME ======= */
+
+.welcome {
+  text-align: center;
+
+  .welcome_heading span {
+    font-size: 13rem;
+    margin-top: 8rem;
+    display: inline-block;
+  }
 }
 
 /* ================= Profile Section ================= */

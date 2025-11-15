@@ -10,9 +10,18 @@ const messageSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    // required: [true, 'A mesage must belong to a user'],
+    required: [true, 'A mesage must belong to a user'],
   },
   room: { type: mongoose.Schema.ObjectId, ref: 'Room' },
+});
+
+messageSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'user',
+    select: '-__v',
+  });
+
+  next();
 });
 
 const Message = mongoose.model('Message', messageSchema);

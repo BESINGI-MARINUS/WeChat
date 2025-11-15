@@ -6,7 +6,13 @@
     <title>LinkUp</title>
     <link rel="stylesheet" href="main.css" />
     <!-- <link rel="stylesheet" href="./fontawesome/css/all.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="./js/bundle/index.js"></script>
   </head>
@@ -16,35 +22,35 @@
       <nav class="side-nav">
         <ul class="side-icons">
           <li class="side-icon side-icon-1">
-              <svg class="icon icon-message">
-                <use xlink:href="sprite.svg#icon-bubbles4"></use>
-              </svg>
+            <svg class="icon icon-message">
+              <use xlink:href="sprite.svg#icon-bubbles4"></use>
+            </svg>
           </li>
           <li class="side-icon" data-tab="2">
-              <svg class="icon nav-icon">
-                <use xlink:href="./sprite.svg#icon-user"></use>
-              </svg>
+            <svg class="icon nav-icon">
+              <use xlink:href="./sprite.svg#icon-user"></use>
+            </svg>
           </li>
           <li class="side-icon side-message-box side-nav-active" data-tab="1">
-              <svg class="icon nav-icon side-nav-active-icon">
-                <use xlink:href="./sprite.svg#icon-message"></use>
-              </svg>
-              <span class="notification">9</span>
+            <svg class="icon nav-icon side-nav-active-icon">
+              <use xlink:href="./sprite.svg#icon-message"></use>
+            </svg>
+            <span class="notification">9</span>
           </li>
           <li class="side-icon">
-              <svg class="icon nav-icon">
-                <use xlink:href="./sprite.svg#icon-address-book"></use>
-              </svg>
+            <svg class="icon nav-icon">
+              <use xlink:href="./sprite.svg#icon-address-book"></use>
+            </svg>
           </li>
           <li class="side-icon">
-              <svg class="icon nav-icon">
-                <use xlink:href="./sprite.svg#icon-bookmark"></use>
-              </svg>
+            <svg class="icon nav-icon">
+              <use xlink:href="./sprite.svg#icon-bookmark"></use>
+            </svg>
           </li>
-          <li class="side-icon" data-tab="3"> 
-              <svg class="icon nav-icon">
-                <use xlink:href="./sprite.svg#icon-cog"></use>
-              </svg>
+          <li class="side-icon" data-tab="3">
+            <svg class="icon nav-icon">
+              <use xlink:href="./sprite.svg#icon-cog"></use>
+            </svg>
           </li>
           <li class="side-icon side-icon-moon">
             <svg class="icon">
@@ -62,202 +68,214 @@
       </nav>
 
       <!-- pane to display List of chats -->
-    <aside class="friends-pane">
-       <section class="section-chatlist middle-content"  id="content--1">
-       <header class="header-chatlist">
-          <h1 class="heading-primary">
-            messages <span class="num-of-message">(237)</span>
-          </h1>
-          <form action="#" class="form">
-            <svg class="search-icon">
-              <use xlink:href="./sprite.svg#icon-search"></use>
-            </svg>
-            <input type="text" class="input input-search" placeholder="Search here..." />
-          </form>
-        </header>
-        <section class="friends-list">
-          <ul class="items">
-            <h2 class="heading-secondary">favourites</h2>
-            <li class="item chat-active">
-              <div class="profile-img-box">
-                <img
-                  src="./img/marinus.jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Mr Excellent</h3>
-                <p class="message-body">I will be on my way soon...</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/biggy.jpeg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Royal Damilola</h3>
-                <p class="message-body">You be mumu man😂😂</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/blessing - Copy (2).jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Wanyu Blaise</h3>
-                <p class="message-body">Yh I'm the PHP plug😎</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/shinelda.png"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Opeh Sandrine</h3>
-                <p class="message-body">Mr Kah said that na...</p>
-              </div>
-            </li>
-          </ul>
-          <ul class="items">
-            <h2 class="heading-secondary">direct messages</h2>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/cecile.jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Engr Caleb</h3>
-                <p class="message-body">My name is synonymous to python😎</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/marinus.jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Tipa Brandon</h3>
-                <p class="message-body">Ok good to know😍</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/blessing - Copy (2).jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Awudu Meleng</h3>
-                <p class="message-body">wah papa 🤣🤣🤣🤣</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/shinelda.png"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-                <span class="green-dot"></span>
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Marinus Silva</h3>
-                <p class="message-body">What I do for a living? Programming.</p>
-              </div>
-            </li>
-          </ul>
-          <ul class="items">
-            <h2 class="heading-secondary">channels</h2>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/cecile.jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">LMU socials</h3>
-                <p class="message-body">Dr students...</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/marinus.jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">LMU Sports</h3>
-                <p class="message-body">Ok good to know😍</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/blessing - Copy (2).jpg"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Study group</h3>
-                <p class="message-body">wah papa 🤣🤣🤣🤣</p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="profile-img-box">
-                <img
-                  src="./img/shinelda.png"
-                  alt="profile photo"
-                  class="profile-img"
-                />
-              </div>
-              <div class="text-box">
-                <h3 class="heading-tertiary">Programming Hub</h3>
-                <p class="message-body">What I do for a living? Programming.</p>
-              </div>
-            </li>
-          </ul>
+      <aside class="friends-pane">
+        <section class="section-chatlist middle-content" id="content--1">
+          <header class="header-chatlist">
+            <h1 class="heading-primary">
+              messages <span class="num-of-message">(237)</span>
+            </h1>
+            <form action="#" class="form">
+              <svg class="search-icon">
+                <use xlink:href="./sprite.svg#icon-search"></use>
+              </svg>
+              <input
+                type="text"
+                class="input input-search"
+                placeholder="Search here..."
+              />
+            </form>
+          </header>
+          <section class="friends-list">
+            <ul class="items">
+              <h2 class="heading-secondary">favourites</h2>
+              <li class="item chat-active">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/marinus.jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Mr Excellent</h3>
+                  <p class="message-body">I will be on my way soon...</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/biggy.jpeg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Royal Damilola</h3>
+                  <p class="message-body">You be mumu man😂😂</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/blessing - Copy (2).jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Wanyu Blaise</h3>
+                  <p class="message-body">Yh I'm the PHP plug😎</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/shinelda.png"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Opeh Sandrine</h3>
+                  <p class="message-body">Mr Kah said that na...</p>
+                </div>
+              </li>
+            </ul>
+            <ul class="items">
+              <h2 class="heading-secondary">direct messages</h2>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/cecile.jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Engr Caleb</h3>
+                  <p class="message-body">My name is synonymous to python😎</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/marinus.jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Tipa Brandon</h3>
+                  <p class="message-body">Ok good to know😍</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/blessing - Copy (2).jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Awudu Meleng</h3>
+                  <p class="message-body">wah papa 🤣🤣🤣🤣</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/shinelda.png"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                  <span class="green-dot"></span>
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Marinus Silva</h3>
+                  <p class="message-body">
+                    What I do for a living? Programming.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <ul class="items">
+              <h2 class="heading-secondary">channels</h2>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/cecile.jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">LMU socials</h3>
+                  <p class="message-body">Dr students...</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/marinus.jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">LMU Sports</h3>
+                  <p class="message-body">Ok good to know😍</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/blessing - Copy (2).jpg"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Study group</h3>
+                  <p class="message-body">wah papa 🤣🤣🤣🤣</p>
+                </div>
+              </li>
+              <li class="item">
+                <div class="profile-img-box">
+                  <img
+                    src="./img/shinelda.png"
+                    alt="profile photo"
+                    class="profile-img"
+                  />
+                </div>
+                <div class="text-box">
+                  <h3 class="heading-tertiary">Programming Hub</h3>
+                  <p class="message-body">
+                    What I do for a living? Programming.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
         </section>
-      </section> 
 
         <section class="section-profile middle-content hidden" id="content--2">
           <div class="profile-main">
             <div class="cover-img-box">
-              <img src="./img/marinus.jpg" alt="cover photo">
+              <img src="./img/marinus.jpg" alt="cover photo" />
               <div class="profile-img-box" id="profile">
-                <img src="./img/shinelda.png" alt="profile photo" class="profile-photo">
+                <img
+                  src="./img/shinelda.png"
+                  alt="profile photo"
+                  class="profile-photo"
+                />
               </div>
             </div>
             <div class="proffession">
@@ -267,7 +285,8 @@
           </div>
           <div class="profile-description">
             <p class="paragraph">
-              A professional profile is an introductory section on your resume that highlights your relevant qualifications and skills.
+              A professional profile is an introductory section on your resume
+              that highlights your relevant qualifications and skills.
             </p>
 
             <ul class="details">
@@ -303,148 +322,182 @@
               </div>
               <div class="media__row">
                 <div class="img-box">
-                  <img src="./img/biggy.jpeg" alt="user media image" class="media__img">
+                  <img
+                    src="./img/biggy.jpeg"
+                    alt="user media image"
+                    class="media__img"
+                  />
                 </div>
                 <div class="img-box">
-                  <img src="./img/blessing - Copy (2).jpg" alt="user media image" class="media__img">
+                  <img
+                    src="./img/blessing - Copy (2).jpg"
+                    alt="user media image"
+                    class="media__img"
+                  />
                 </div>
                 <div class="img-box">
-                  <img src="./img/cecile.jpg" alt="user media image" class="media__img">
+                  <img
+                    src="./img/cecile.jpg"
+                    alt="user media image"
+                    class="media__img"
+                  />
                 </div>
               </div>
             </div>
 
             <div class="media"></div>
           </div>
-        </section> 
+        </section>
 
-        <section class="section-setting section-profile middle-content hidden" id="content--3">
+        <section
+          class="section-setting section-profile middle-content hidden"
+          id="content--3"
+        >
           <div class="profile-main">
             <div class="cover-img-box">
-              <img src="./img/marinus.jpg" alt="cover photo">
-              <div class="profile-img-box           profile-img-box-setting" id="profile">
-                <img src="./img/shinelda.png" alt="profile photo" class="profile-photo">
+              <img src="./img/marinus.jpg" alt="cover photo" />
+              <div class="profile-img-box profile-img-box-setting" id="profile">
+                <img
+                  src="./img/shinelda.png"
+                  alt="profile photo"
+                  class="profile-photo"
+                />
                 <div class="camera-box">
                   <i class="fa fa-camera"></i>
                 </div>
               </div>
             </div>
-           <ul class="setting-items">
-             <li class="setting-item" data-val = "1">
-              <div class="setting__row">
-                <i class="fa fa-user icon-left"></i>
-                <h3 class="heading-tertiary">Personal Info</h3>
-                <i class="fa fa-angle-down icon-right"></i>
+            <ul class="setting-items">
+              <li class="setting-item" data-val="1">
+                <div class="setting__row">
+                  <i class="fa fa-user icon-left"></i>
+                  <h3 class="heading-tertiary">Personal Info</h3>
+                  <i class="fa fa-angle-down icon-right"></i>
+                </div>
+              </li>
+              <form action="#" class="form hidden" id="hidden--1">
+                <div class="form__row">
+                  <label>Name</label>
+                  <input type="text" class="input" value="Mr Excellent" />
+                </div>
+                <div class="form__row">
+                  <label>Email</label>
+                  <input type="text" class="input" value="example1@gmail.com" />
+                </div>
+                <div class="form__row">
+                  <label>phone no</label>
+                  <input type="text" class="input" value="+237 677-77-77-77" />
+                </div>
+                <div class="form__row">
+                  <label>location</label>
+                  <input type="text" class="input" value="Nevada, USA" />
+                </div>
+              </form>
+              <li class="setting-item" data-val="2">
+                <div class="setting__row">
+                  <i class="fa fa-lock icon-left"></i>
+                  <h3 class="heading-tertiary">Privacy</h3>
+                  <i class="fa fa-angle-down icon-right"></i>
+                </div>
+              </li>
+              <div class="hidden" id="hidden--2">
+                <h3 class="heading-tertiary setting-heading-main">
+                  Who can see my personal info
+                </h3>
+                <ul class="privacies">
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Profile photo</h3>
+                    <select class="dropdown">
+                      <option value="Everyone">Everyone</option>
+                      <option value="Everyone">Selected</option>
+                      <option value="Everyone">Nobody</option>
+                    </select>
+                  </li>
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Status</h3>
+                    <select class="dropdown">
+                      <option value="Everyone">Everyone</option>
+                      <option value="Everyone">Selected</option>
+                      <option value="Everyone">Nobody</option>
+                    </select>
+                  </li>
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Groups</h3>
+                    <select class="dropdown">
+                      <option value="Everyone">Everyone</option>
+                      <option value="Everyone">Selected</option>
+                      <option value="Everyone">Nobody</option>
+                    </select>
+                  </li>
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Last seen</h3>
+                    <input
+                      type="checkbox"
+                      class="hidden input-hidden"
+                      id="last-seen"
+                    />
+                    <label for="last-seen" class="custom-checkbox"
+                      >&nbsp;</label
+                    >
+                  </li>
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Online</h3>
+                    <input
+                      type="checkbox"
+                      class="hidden input-hidden"
+                      id="online"
+                    />
+                    <label for="online" class="custom-checkbox">&nbsp;</label>
+                  </li>
+                </ul>
               </div>
-            </li>
-            <form action="#" class="form hidden" id="hidden--1">
-              <div class="form__row">
-                <label>Name</label>
-                <input type="text" class="input" value="Mr Excellent">
+              <li class="setting-item" data-val="3">
+                <div class="setting__row">
+                  <i class="fas fa-shield-alt icon-left"></i>
+                  <h3 class="heading-tertiary">Security</h3>
+                  <i class="fa fa-angle-down icon-right"></i>
+                </div>
+              </li>
+              <div class="hidden" id="hidden--3">
+                <ul class="privacies">
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Show security notification</h3>
+                    <input
+                      type="checkbox"
+                      class="hidden input-hidden"
+                      id="sec-not"
+                    />
+                    <label for="sec-not" class="custom-checkbox">&nbsp;</label>
+                  </li>
+                </ul>
               </div>
-              <div class="form__row">
-                <label>Email</label>
-                <input type="text" class="input" value="example1@gmail.com">
+              <li class="setting-item" data-val="4">
+                <div class="setting__row">
+                  <i class="fa fa-info-circle icon-left"></i>
+                  <h3 class="heading-tertiary">Help</h3>
+                  <i class="fa fa-angle-down icon-right"></i>
+                </div>
+              </li>
+              <div class="hidden" id="hidden--4">
+                <ul class="privacies">
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">FAQs</h3>
+                  </li>
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Contacts</h3>
+                  </li>
+                  <li class="privacy">
+                    <h3 class="heading-tertiary">Terms and privacy policy</h3>
+                  </li>
+                </ul>
               </div>
-              <div class="form__row">
-                <label>phone no</label>
-                <input type="text" class="input" value="+237 677-77-77-77">
-              </div>
-              <div class="form__row">
-                <label>location</label>
-                <input type="text" class="input" value="Nevada, USA">
-              </div>
-              
-            </form>
-             <li class="setting-item" data-val = "2">
-              <div class="setting__row">
-                <i class="fa fa-lock icon-left"></i>
-                <h3 class="heading-tertiary">Privacy</h3>
-                <i class="fa fa-angle-down icon-right"></i>
-              </div>
-            </li>
-            <div class="hidden" id="hidden--2">
-              <h3 class="heading-tertiary setting-heading-main">Who can see my personal info</h3>
-              <ul class="privacies">
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Profile photo</h3>
-                  <select class="dropdown">
-                    <option value="Everyone">Everyone</option>
-                    <option value="Everyone">Selected</option>
-                    <option value="Everyone">Nobody</option>
-                  </select>
-                </li>
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Status</h3>
-                  <select class="dropdown">
-                    <option value="Everyone">Everyone</option>
-                    <option value="Everyone">Selected</option>
-                    <option value="Everyone">Nobody</option>
-                  </select>
-                </li>
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Groups</h3>
-                  <select class="dropdown">
-                    <option value="Everyone">Everyone</option>
-                    <option value="Everyone">Selected</option>
-                    <option value="Everyone">Nobody</option>
-                  </select>
-                </li>
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Last seen</h3>
-                  <input type="checkbox" class="hidden input-hidden" id="last-seen">
-                  <label for="last-seen" class="custom-checkbox">&nbsp;</label>
-                </li>
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Online</h3>
-                  <input type="checkbox" class="hidden input-hidden" id="online">
-                  <label for="online" class="custom-checkbox">&nbsp;</label>
-                </li>
-              </ul>
-            </div>
-             <li class="setting-item" data-val = "3">
-              <div class="setting__row">
-                <i class="fas fa-shield-alt icon-left"></i>
-                <h3 class="heading-tertiary">Security</h3>
-                <i class="fa fa-angle-down icon-right"></i>
-              </div>
-            </li>
-            <div class="hidden" id="hidden--3">
-              <ul class="privacies">
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Show security notification</h3>
-                  <input type="checkbox" class="hidden input-hidden" id="sec-not">
-                  <label for="sec-not" class="custom-checkbox">&nbsp;</label>
-                </li>
-              </ul>
-            </div>
-             <li class="setting-item" data-val = "4">
-              <div class="setting__row">
-                <i class="fa fa-info-circle icon-left"></i>
-                <h3 class="heading-tertiary">Help</h3>
-                <i class="fa fa-angle-down icon-right"></i>
-              </div>
-            </li>
-            <div class="hidden" id="hidden--4">
-              <ul class="privacies">
-                <li class="privacy">
-                  <h3 class="heading-tertiary">FAQs</h3>
-                </li>
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Contacts</h3>
-                </li>
-                <li class="privacy">
-                  <h3 class="heading-tertiary">Terms and privacy policy</h3>
-                </li>
-              </ul>
-            </div>
-           </ul>
+            </ul>
           </div>
         </section>
-    </aside>
+      </aside>
 
       <!-- ================================================ -->
-      
+
       <main class="main">
         <header class="header">
           <div class="item">
@@ -501,7 +554,10 @@
           </div>
         </header>
         <section class="section-messages-box">
-          <div class="sender-message-box">
+          <div class="welcome">
+            <h3 class="welcome_heading"><span>Welcome</span></h3>
+          </div>
+          <!-- <div class="sender-message-box">
             <p class="message-sender">Well I don't mind. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, maxime deserunt consectetur, molestiae eaque iste placeat explicabo numquam officiis exercitationem, culpa a possimus consequuntur facilis maiores nulla? Similique, ab quo?</p>
             <p><span>&#10004&#10004</span>5:42 AM</p>
           </div>
@@ -516,9 +572,9 @@
           <div class="sender-message-box">
             <p class="message-sender">Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.</p>
             <p><span>&#10004</span>5:42 PM</p>
-          </div>
+          </div> -->
         </section>
-
+        <!-- 
         <div class="section-send-msg">
           <div class="row">
             <svg class="icon">
@@ -528,8 +584,15 @@
               <use xlink:href="./sprite.svg#icon-emoji-happy"></use>
             </svg>
             <form class="form-msg">
-              <input type="text" class="input input-msg" placeholder="Type your message...">
-              <p>Mr Excellent is typing <span class="dot dot1"></span><span class="dot dot2"></span><span class="dot dot3"></span></p>
+              <input
+                type="text"
+                class="input input-msg"
+                placeholder="Type your message..."
+              />
+              <p>
+                Mr Excellent is typing <span class="dot dot1"></span
+                ><span class="dot dot2"></span><span class="dot dot3"></span>
+              </p>
               <svg class="icon">
                 <use xlink:href="./sprite.svg#icon-mic"></use>
               </svg>
@@ -540,7 +603,7 @@
               </button>
             </form>
           </div>
-        </div>
+        </div> -->
       </main>
     </div>
   </body>
