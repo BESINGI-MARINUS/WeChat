@@ -82,7 +82,7 @@ socket.on('chat message', (msg, serverOffset) => {
       `;
   // if (messages) messages.insertAdjacentHTML('beforeend', markup);
 
-  window.scrollTo(0, document.body.scrollHeight);
+  messages.scrollTo(0, document.body.scrollHeight);
   socket.auth.serverOffset = serverOffset;
 });
 
@@ -119,6 +119,7 @@ if (signupForm) {
 
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
+    document.getElementById('occupation').value = '';
     document.getElementById('password').value = '';
     document.getElementById('confirm-password').value = '';
     document.getElementById('confirm-password').blur();

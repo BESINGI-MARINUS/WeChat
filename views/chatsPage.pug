@@ -1,4 +1,15 @@
 extends _base
+
+//- Add .chat-active to the active chat when clicked.
+mixin createUser(img,name,occupation)
+  li.item
+    .profile-img-box
+      img.profile-img(src=`./img/${img}`, alt="profile photo")
+      span.green-dot
+    .text-box
+      h3.heading-tertiary #{name}
+      p.message-body #{occupation}
+
 block append head
   link(rel="stylesheet", href="main.css")
   link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css", integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==", crossorigin="anonymous", referrerpolicy="no-referrer")
@@ -45,90 +56,85 @@ block content
         section.friends-list
           ul.items
             h2.heading-secondary favourites
-            li.item.chat-active
-              .profile-img-box
-                img.profile-img(src="./img/marinus.jpg", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Mr Excellent
-                p.message-body I will be on my way soon...
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/biggy.jpeg", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Royal Damilola
-                p.message-body You be mumu man😂😂
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Wanyu Blaise
-                p.message-body Yh I&apos;m the PHP plug😎
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/shinelda.png", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Opeh Sandrine
-                p.message-body Mr Kah said that na...
-          ul.items
-            h2.heading-secondary direct messages
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/cecile.jpg", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Engr Caleb
-                p.message-body My name is synonymous to python😎
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/marinus.jpg", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Tipa Brandon
-                p.message-body Ok good to know😍
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Awudu Meleng
-                p.message-body wah papa 🤣🤣🤣🤣
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/shinelda.png", alt="profile photo")
-                span.green-dot
-              .text-box
-                h3.heading-tertiary Marinus Silva
-                p.message-body What I do for a living? Programming.
-          ul.items
-            h2.heading-secondary channels
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/cecile.jpg", alt="profile photo")
-              .text-box
-                h3.heading-tertiary LMU socials
-                p.message-body Dr students...
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/marinus.jpg", alt="profile photo")
-              .text-box
-                h3.heading-tertiary LMU Sports
-                p.message-body Ok good to know😍
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
-              .text-box
-                h3.heading-tertiary Study group
-                p.message-body wah papa 🤣🤣🤣🤣
-            li.item
-              .profile-img-box
-                img.profile-img(src="./img/shinelda.png", alt="profile photo")
-              .text-box
-                h3.heading-tertiary Programming Hub
-                p.message-body What I do for a living? Programming.
+            each user in users
+              +createUser('marinus.jpg',user.name,'FullStack MERN Developer')
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/biggy.jpeg", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Royal Damilola
+          //-       p.message-body You be mumu man😂😂
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Wanyu Blaise
+          //-       p.message-body Yh I&apos;m the PHP plug😎
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/shinelda.png", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Opeh Sandrine
+          //-       p.message-body Mr Kah said that na...
+          //- ul.items
+          //-   h2.heading-secondary direct messages
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/cecile.jpg", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Engr Caleb
+          //-       p.message-body My name is synonymous to python😎
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Tipa Brandon
+          //-       p.message-body Ok good to know😍
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Awudu Meleng
+          //-       p.message-body wah papa 🤣🤣🤣🤣
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/shinelda.png", alt="profile photo")
+          //-       span.green-dot
+          //-     .text-box
+          //-       h3.heading-tertiary Marinus Silva
+          //-       p.message-body What I do for a living? Programming.
+          //- ul.items
+          //-   h2.heading-secondary channels
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/cecile.jpg", alt="profile photo")
+          //-     .text-box
+          //-       h3.heading-tertiary LMU socials
+          //-       p.message-body Dr students...
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+          //-     .text-box
+          //-       h3.heading-tertiary LMU Sports
+          //-       p.message-body Ok good to know😍
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/blessing - Copy (2).jpg", alt="profile photo")
+          //-     .text-box
+          //-       h3.heading-tertiary Study group
+          //-       p.message-body wah papa 🤣🤣🤣🤣
+          //-   li.item
+          //-     .profile-img-box
+          //-       img.profile-img(src="./img/shinelda.png", alt="profile photo")
+          //-     .text-box
+          //-       h3.heading-tertiary Programming Hub
+          //-       p.message-body What I do for a living? Programming.
       section#content--2.section-profile.middle-content.hidden
         .profile-main
           .cover-img-box
@@ -256,78 +262,83 @@ block content
                   h3.heading-tertiary Terms and privacy policy
     // ================================================
     main.main
-      header.header
-        .item
-          .profile-img-box
-            img.profile-img(src="./img/marinus.jpg", alt="profile photo")
-            span.green-dot
-          .text-box
-            h3.heading-tertiary Mr Excellent
-            p.message-body Online
-        .header-iconbox
-          .user-nav-icons
-            ul.items.icons-flex-container
-              li.item
-                svg.icon
-                  use(xlink:href="./sprite.svg#icon-search")
-              li.item
-                svg.icon
-                  use(xlink:href="./sprite.svg#icon-phone")
-              li.item
-                svg.icon
-                  use(xlink:href="./sprite.svg#icon-video-camera")
-              li.item
-                svg.icon
-                  use(xlink:href="./sprite.svg#icon-bookmark")
-              li.item
-                svg.icon
-                  use(xlink:href="./sprite.svg#icon-notification")
-              li.item
-                svg.icon
-                  use(xlink:href="./sprite.svg#icon-dots-three-vertical")
+      //- header.header
+      //-   .item
+      //-     .profile-img-box
+      //-       img.profile-img(src="./img/marinus.jpg", alt="profile photo")
+      //-       span.green-dot
+      //-     .text-box
+      //-       h3.heading-tertiary Mr Excellent
+      //-       p.message-body Online
+      //-   .header-iconbox
+      //-     .user-nav-icons
+      //-       ul.items.icons-flex-container
+      //-         li.item
+      //-           svg.icon
+      //-             use(xlink:href="./sprite.svg#icon-search")
+      //-         li.item
+      //-           svg.icon
+      //-             use(xlink:href="./sprite.svg#icon-phone")
+      //-         li.item
+      //-           svg.icon
+      //-             use(xlink:href="./sprite.svg#icon-video-camera")
+      //-         li.item
+      //-           svg.icon
+      //-             use(xlink:href="./sprite.svg#icon-bookmark")
+      //-         li.item
+      //-           svg.icon
+      //-             use(xlink:href="./sprite.svg#icon-notification")
+      //-         li.item
+      //-           svg.icon
+      //-             use(xlink:href="./sprite.svg#icon-dots-three-vertical")
       section.section-messages-box
         .welcome
           h3.welcome_heading
             span Welcome
-      //- - const className = messages.user.id === user.id?'.sender-message-box' : '.reciever-message-box';
-      //-   each message in messages
-      //-     className
-      //-       p.message-sender= message.content
-      //-       p
-      //-         span &#10004&#10004
-      //-         | 5:42 AM
-      //-   .reciever-message-box
-      //-     p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
-      //-     p
-      //-         span &#10004
-      //-         | 5:42 PM
-      //-   .reciever-message-box
-      //-     p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
-      //-     p
-      //-       span &#10004
-      //-       | 5:42 PM
-      //-   .sender-message-box
-      //-     p.message-sender Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
-      //-     p
-      //-       span &#10004
-      //-       | 5:42 PM
-      //- .section-send-msg
-      //-   .row
-      //-     svg.icon
-      //-       use(xlink:href="./sprite.svg#icon-dots-three-horizontal")
-      //-     svg.icon
-      //-       use(xlink:href="./sprite.svg#icon-emoji-happy")
-      //-     form.form-msg
-      //-       input.input.input-msg(type="text", placeholder="Type your message...")
-      //-       p Mr Excellent is typing 
-      //-         span.dot.dot1
-      //-         span.dot.dot2
-      //-         span.dot.dot3
-      //-       svg.icon
-      //-         use(xlink:href="./sprite.svg#icon-mic")
-      //-       button
-      //-         svg.icon.icon-send
-      //-           use(xlink:href="./sprite.svg#icon-paper-plane")
+
+        //- each message in messages 
+        //-   .sender-message-box
+        //-     p.message-sender= message.content
+        //-     p
+        //-       span &#10004&#10004
+        //-       | 5:42 AM
+        //- .sender-message-box(data-user =' user')
+        //-     p.message-sender Hello
+        //-     p
+        //-       span &#10004&#10004
+        //-       | 5:42 AM
+        //- .reciever-message-box
+        //-   p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+        //-   p
+        //-       span &#10004
+        //-       | 5:42 PM
+        //- .reciever-message-box
+        //-   p.message-reciever Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+        //-   p
+        //-     span &#10004
+        //-     | 5:42 PM
+        //- .sender-message-box
+        //-   p.message-sender Ok good. I wil be waiting. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quasi quia ducimus. Ipsa natus voluptatum commodi dicta, quo autem aliquid odio, minima sapiente dolor odit impedit fuga explicabo, soluta quidem.
+        //-   p
+        //-     span &#10004
+        //-     | 5:42 PM
+        //- .section-send-msg
+        //-   .row
+        //-     svg.icon
+        //-       use(xlink:href="./sprite.svg#icon-dots-three-horizontal")
+        //-     svg.icon
+        //-       use(xlink:href="./sprite.svg#icon-emoji-happy")
+        //-     form.form-msg
+        //-       input.input.input-msg(type="text", placeholder="Type your message...")
+        //-       p Mr Excellent is typing 
+        //-         span.dot.dot1
+        //-         span.dot.dot2
+        //-         span.dot.dot3
+        //-       svg.icon
+        //-         use(xlink:href="./sprite.svg#icon-mic")
+        //-       button
+        //-         svg.icon.icon-send
+        //-           use(xlink:href="./sprite.svg#icon-paper-plane")
   script.
     window.APP_DATA = {
       currentUser: !{JSON.stringify(user.id)}

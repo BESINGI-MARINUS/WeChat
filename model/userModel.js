@@ -20,6 +20,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  occupation: {
+    type: String,
+    required: [true, 'Please input your occupation.'],
+    trim: true,
+    minlength: 2,
+  },
   password: {
     type: String,
     required: [true, 'Please enter your password'],

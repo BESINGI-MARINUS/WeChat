@@ -779,7 +779,7 @@ socket.on('chat message', (msg, serverOffset)=>{
     </div>
       `;
     // if (messages) messages.insertAdjacentHTML('beforeend', markup);
-    window.scrollTo(0, document.body.scrollHeight);
+    messages.scrollTo(0, document.body.scrollHeight);
     socket.auth.serverOffset = serverOffset;
 });
 const loginForm = document.querySelector('#login-form');
@@ -805,6 +805,7 @@ if (signupForm) signupForm.addEventListener('submit', async function(e) {
     for (const [key, value] of formData)credentials[key] = value;
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
+    document.getElementById('occupation').value = '';
     document.getElementById('password').value = '';
     document.getElementById('confirm-password').value = '';
     document.getElementById('confirm-password').blur();

@@ -29,9 +29,9 @@ const sendResponse = (res, statusCode, user) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const { name, email, password, passwordConfirm } = req.body;
+  const { name, email,occupation, password, passwordConfirm } = req.body;
 
-  const user = await User.create({ name, email, password, passwordConfirm });
+  const user = await User.create({ name, email,occupation, password, passwordConfirm });
   sendResponse(res, 201, user);
 });
 

@@ -1,4 +1,5 @@
 const Message = require('../model/messageModel');
+const User = require('../model/userModel');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getSignup = (req, res, next) => {
@@ -14,6 +15,7 @@ exports.getLandingPage = (req, res, next) => {
 };
 
 exports.getChatPage = catchAsync(async (req, res, next) => {
-  const messages = await Message.find();
-  res.status(200).render('chatsPage', { title: 'LinkUp', messages });
+  // const messages = await Message.find();
+  const users = await User.find();
+  res.status(200).render('chatsPage', { title: 'LinkUp', users });
 });
