@@ -716,7 +716,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"f2QDv":[function(require,module,exports,__globalThis) {
 // "use strict";
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _login = require("./login");
+var _auth = require("./auth");
 var _socketClass = require("./SocketClass");
 var _socketClassDefault = parcelHelpers.interopDefault(_socketClass);
 // ELEMENTS
@@ -726,6 +726,7 @@ const sideLeftIcons = document.querySelectorAll('.nav-icon');
 const settingsContainer = document.querySelector('.setting-items');
 const settingsItem = document.querySelector('.setting-item');
 const middleSection = document.querySelector('.friends-pane');
+const chartList = document.querySelector('.items');
 // ==================== EVENT HANDLERS =======================
 if (leftIconsContainer) leftIconsContainer.addEventListener('click', function(e) {
     const clicked = e.target.closest('.side-icon');
@@ -752,12 +753,14 @@ if (settingsContainer) settingsContainer.addEventListener('click', function(e) {
 //Send message with Socket.io
 const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
+let room;
 const socket = io({
     auth: {
         serverOffset: 0,
         ackTimeout: 10000,
         retries: 3,
-        user: settingsContainer && window?.APP_DATA.currentUser
+        user: settingsContainer && window?.APP_DATA.currentUser,
+        room: room || null
     }
 });
 if (formMsg) formMsg.addEventListener('submit', function(e) {
@@ -767,7 +770,7 @@ if (formMsg) formMsg.addEventListener('submit', function(e) {
     socket.emit('chat message', msg);
     inputMsg.value = '';
 });
-const messages = document.querySelector('.section-messages-box');
+const messagesContainer = document.querySelector('.section-messages-box');
 socket.on('chat message', (msg, serverOffset)=>{
     let hours = `${new Date().getHours()}`.padStart(2, '0');
     let mins = `${new Date().getMinutes()}`.padStart(2, '0');
@@ -778,8 +781,8 @@ socket.on('chat message', (msg, serverOffset)=>{
       <p><span>&#10004</span>${time}</p>
     </div>
       `;
-    // if (messages) messages.insertAdjacentHTML('beforeend', markup);
-    messages.scrollTo(0, document.body.scrollHeight);
+    // if (messages) messagesContainer.insertAdjacentHTML('beforeend', markup);
+    messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
     socket.auth.serverOffset = serverOffset;
 });
 const loginForm = document.querySelector('#login-form');
@@ -794,7 +797,7 @@ if (loginForm) loginForm.addEventListener('submit', async function(e) {
     document.getElementById('password').blur();
     document.getElementById('login').textContent = 'Connecting...';
     document.getElementById('login').style.opacity = '0.5';
-    await (0, _login.login)(email, password);
+    await (0, _auth.login)(email, password);
 });
 // Signup
 const signupForm = document.getElementById('signup-form');
@@ -811,10 +814,56 @@ if (signupForm) signupForm.addEventListener('submit', async function(e) {
     document.getElementById('confirm-password').blur();
     document.getElementById('btn-signup').textContent = 'Connecting...';
     document.getElementById('btn-signup').style.opacity = '0.5';
-    await (0, _login.signup)(credentials);
+    await (0, _auth.signup)(credentials);
+});
+if (chartList) chartList.addEventListener('click', function(e) {
+    document.querySelectorAll('.item').forEach((c)=>c.classList.remove('chat-active'));
+    const activeChat = e.target.closest('.item');
+    if (!activeChat) return;
+    activeChat.classList.add('chat-active');
+    room = activeChat.dataset.user;
 });
 
-},{"./login":"7yHem","./SocketClass":"8HPqo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7yHem":[function(require,module,exports,__globalThis) {
+},{"./SocketClass":"8HPqo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./auth":"fov0Z"}],"8HPqo":[function(require,module,exports,__globalThis) {
+class SocketClass {
+    constructor(socket){
+        this.socket = socket;
+    }
+    emitMsgToServer() {}
+}
+module.exports = SocketClass;
+
+},{}],"gkKU3":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"fov0Z":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "login", ()=>login);
@@ -1562,37 +1611,7 @@ function bind(fn, thisArg) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"cpqD8":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cpqD8":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utilsJs = require("./../utils.js");
@@ -5776,15 +5795,6 @@ Object.entries(HttpStatusCode).forEach(([key, value])=>{
 });
 exports.default = HttpStatusCode;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8HPqo":[function(require,module,exports,__globalThis) {
-class SocketClass {
-    constructor(socket){
-        this.socket = socket;
-    }
-    emitMsgToServer() {}
-}
-module.exports = SocketClass;
-
-},{}]},["k2ZJO","f2QDv"], "f2QDv", "parcelRequire466a", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["k2ZJO","f2QDv"], "f2QDv", "parcelRequire466a", {})
 
 //# sourceMappingURL=index.js.map

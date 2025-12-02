@@ -23,10 +23,14 @@ const io = new Server(server, { connectionStateRecovery: {} }); //Deliver messag
 
 io.use((socket, next) => {
   const userId = socket.handshake.auth.user;
+  const { room } = socket.handshake.auth;
+  console.log('ROOM: ', room);
 
-  if (!userId) return next(new AppError('Invalid user ID', 401));
+  if (!userId || !room)
+    return next(new AppError('Invalid user or room ID', 401));
 
   socket.userId = userId;
+  socket.room = room;
   next();
 });
 

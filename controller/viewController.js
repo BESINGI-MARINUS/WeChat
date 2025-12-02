@@ -15,7 +15,6 @@ exports.getLandingPage = (req, res, next) => {
 };
 
 exports.getChatPage = catchAsync(async (req, res, next) => {
-  // const messages = await Message.find();
-  const users = await User.find();
+  const users = await User.find({ _id: { $ne: req.user.id } });
   res.status(200).render('chatsPage', { title: 'LinkUp', users });
 });

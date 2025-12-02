@@ -1,5 +1,5 @@
 // "use strict";
-import { login, signup } from './login';
+import { login, signup } from './auth';
 import SocketClass from './SocketClass';
 
 // ELEMENTS
@@ -9,6 +9,7 @@ const sideLeftIcons = document.querySelectorAll('.nav-icon');
 const settingsContainer = document.querySelector('.setting-items');
 const settingsItem = document.querySelector('.setting-item');
 const middleSection = document.querySelector('.friends-pane');
+const chartList = document.querySelector('.items');
 
 // ==================== EVENT HANDLERS =======================
 if (leftIconsContainer)
@@ -48,6 +49,7 @@ if (settingsContainer)
 //Send message with Socket.io
 const formMsg = document.querySelector('.form-msg');
 const inputMsg = document.querySelector('.input-msg');
+let room;
 
 const socket = io({
   auth: {
@@ -55,6 +57,7 @@ const socket = io({
     ackTimeout: 10 * 1000,
     retries: 3,
     user: settingsContainer && window?.APP_DATA.currentUser,
+    room: room || null,
   },
 });
 
@@ -67,7 +70,7 @@ if (formMsg)
     inputMsg.value = '';
   });
 
-const messages = document.querySelector('.section-messages-box');
+const messagesContainer = document.querySelector('.section-messages-box');
 socket.on('chat message', (msg, serverOffset) => {
   let hours = `${new Date().getHours()}`.padStart(2, '0');
   let mins = `${new Date().getMinutes()}`.padStart(2, '0');
@@ -80,9 +83,9 @@ socket.on('chat message', (msg, serverOffset) => {
       <p><span>&#10004</span>${time}</p>
     </div>
       `;
-  // if (messages) messages.insertAdjacentHTML('beforeend', markup);
+  // if (messages) messagesContainer.insertAdjacentHTML('beforeend', markup);
 
-  messages.scrollTo(0, document.body.scrollHeight);
+  messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
   socket.auth.serverOffset = serverOffset;
 });
 
@@ -129,3 +132,15 @@ if (signupForm) {
     await signup(credentials);
   });
 }
+
+if (chartList)
+  chartList.addEventListener('click', function (e) {
+    document
+      .querySelectorAll('.item')
+      .forEach((c) => c.classList.remove('chat-active'));
+
+    const activeChat = e.target.closest('.item');
+    if (!activeChat) return;
+    activeChat.classList.add('chat-active');
+    room = activeChat.dataset.user;
+  });

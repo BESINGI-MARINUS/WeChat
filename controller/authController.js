@@ -29,9 +29,15 @@ const sendResponse = (res, statusCode, user) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const { name, email,occupation, password, passwordConfirm } = req.body;
+  const { name, email, occupation, password, passwordConfirm } = req.body;
 
-  const user = await User.create({ name, email,occupation, password, passwordConfirm });
+  const user = await User.create({
+    name,
+    email,
+    occupation,
+    password,
+    passwordConfirm,
+  });
   sendResponse(res, 201, user);
 });
 
@@ -108,6 +114,7 @@ exports.isLogedIn = catchAsync(async (req, res, next) => {
 
       // Set user
       res.locals.user = currentUser;
+      req.user = currentUser;
       return next();
     } catch (err) {
       return next();

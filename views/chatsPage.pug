@@ -1,8 +1,8 @@
 extends _base
 
 //- Add .chat-active to the active chat when clicked.
-mixin createUser(img,name,occupation)
-  li.item
+mixin createUser(img,name,occupation,id)
+  li.item(data-user = id)
     .profile-img-box
       img.profile-img(src=`./img/${img}`, alt="profile photo")
       span.green-dot
@@ -57,7 +57,7 @@ block content
           ul.items
             h2.heading-secondary favourites
             each user in users
-              +createUser('marinus.jpg',user.name,'FullStack MERN Developer')
+              +createUser('marinus.jpg',user.name,'FullStack MERN Developer',user.id)
           //-   li.item
           //-     .profile-img-box
           //-       img.profile-img(src="./img/biggy.jpeg", alt="profile photo")
